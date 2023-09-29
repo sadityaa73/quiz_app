@@ -2,13 +2,19 @@
   <div id="main">
     <NavigationBar/>
     <HomeSection/>
+    <PhysicsQuiz/>
+    <ChemistryQuiz/>
+    <ComputerScienceQuiz/>
   </div>
 </template>
 <script>
 import HomeSection from '../HomeSection/HomeSection.vue';
 import NavigationBar from '../Navigation/NavigationBar.vue';
+import PhysicsQuiz from "../SubjectQuiz/PhysicsQuiz.vue";
+import ChemistryQuiz from "../SubjectQuiz/ChemistryQuiz.vue";
+import ComputerScienceQuiz from "../SubjectQuiz/ComputerScience.vue"
 export default {
-    components:{NavigationBar,HomeSection,},
+    components:{NavigationBar,HomeSection,PhysicsQuiz,ChemistryQuiz,ComputerScienceQuiz},
   data() {
     return {};
   },
