@@ -1,13 +1,15 @@
 <template>
   <div id="comp-quiz">
     <countDownTimer/>
+    <QuestionComponent/>
   </div>
 </template>
 <script>
 import countDownTimer from "../CountDown/countDownTimer.vue";
+import QuestionComponent from "../question/QuestionComponent.vue";
 export default {
     components:{
-        countDownTimer,
+        countDownTimer,QuestionComponent,
     },
   data() {
     return {};

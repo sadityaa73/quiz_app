@@ -1,12 +1,14 @@
 <template>
   <div id="phy-quiz">
-   <countDownTimer/>
+    <countDownTimer />
+    <QuestionComponent/>
   </div>
 </template>
 <script>
-import countDownTimer from '../CountDown/countDownTimer.vue';
+import countDownTimer from "../CountDown/countDownTimer.vue";
+import QuestionComponent from "../question/QuestionComponent.vue";
 export default {
-    components:{countDownTimer,},
+  components: { countDownTimer,QuestionComponent },
   data() {
     return {
       hours: 3,
@@ -46,4 +48,6 @@ export default {
   box-shadow: 1px 3px 8px 3px grey;
   margin: 1%;
 }
+
+
 </style>

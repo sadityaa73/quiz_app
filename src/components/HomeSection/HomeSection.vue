@@ -6,7 +6,12 @@
           <img
             src="https://www.environmentalscience.org/wp-content/uploads/2018/08/physics-300x300.webp"
             alt="physics"
-            style="width: 310px; height: 180px"
+            style="
+              width: 310px;
+              height: 180px;
+              margin-left: auto;
+              margin-right: auto;
+            "
           />
         </div>
         <div class="start-btn">start quiz</div>
@@ -16,7 +21,12 @@
           <img
             src="https://www.thoughtco.com/thmb/bcj-0Qw8kGp6JQPryxb6vrr5Cc4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-545286316-433dd345105e4c6ebe4cdd8d2317fdaa.jpg"
             alt="chemistry"
-            style="width: 310px; height: 180px"
+            style="
+              width: 310px;
+              height: 180px;
+              margin-left: auto;
+              margin-right: auto;
+            "
           />
         </div>
         <div class="start-btn">start quiz</div>
@@ -26,7 +36,12 @@
           <img
             src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/06/22210327/BE-Computer-Science.png"
             alt="chemistry"
-            style="width: 310px; height: 180px"
+            style="
+              width: 310px;
+              height: 180px;
+              margin-left: auto;
+              margin-right: auto;
+            "
           />
         </div>
         <div class="start-btn">start quiz</div>
@@ -55,7 +70,7 @@
       </div>
       <div class="statstics">
         <div class="heading">Statistic</div>
-        <div style="height: 220px; width:auto;overflow:hidden">
+        <div style="height: 220px; width: auto; overflow: hidden">
           <canvas id="acquisitions"></canvas>
         </div>
       </div>
@@ -69,28 +84,28 @@ export default {
     return {};
   },
   mounted() {
-   this.getGraph();
+    this.getGraph();
   },
   methods: {
-    async getGraph(){
+    async getGraph() {
       const data = [
-      { subject: "physics", count: 10 },
-      { subject: "checmistry", count: 20 },
-      { subject: "computer science", count: 15 },
-    ];
-    await new Chart(document.getElementById("acquisitions"), {
-      type: "bar",
-      data: {
-        labels: data.map((row) => row.subject),
-        datasets: [
-          {
-            label: "Acquisitions by subjects",
-            data: data.map((row) => row.count),
-          },
-        ],
-      },
-    });
-    }
+        { subject: "physics", count: 10 },
+        { subject: "checmistry", count: 20 },
+        { subject: "computer science", count: 15 },
+      ];
+      await new Chart(document.getElementById("acquisitions"), {
+        type: "bar",
+        data: {
+          labels: data.map((row) => row.subject),
+          datasets: [
+            {
+              label: "Acquisitions by subjects",
+              data: data.map((row) => row.count),
+            },
+          ],
+        },
+      });
+    },
   },
 };
 </script>
@@ -144,12 +159,12 @@ export default {
   top: 0px;
   overflow: hidden;
 }
-.start-btn:hover{
+.start-btn:hover {
   box-shadow: 1px 3px 8px 3px grey;
 }
-.start-btn:active{
+.start-btn:active {
   background: yellowgreen;
-  color:black;
+  color: black;
 }
 .container-two {
   display: flex;

@@ -40,8 +40,7 @@
   </script>
   <style scoped>
   .timer-clock {
-    border: 1px solid;
-    min-height: 49px;
+    min-height: 94px;
     margin: 7px;
     display: flex;
     justify-content: flex-end;
@@ -49,6 +48,7 @@
   .clock-container {
     border: 1px solid;
     min-width: 156px;
+    height: 45px;
     margin: 6px;
     border-radius: 7px;
     background: #2a8ff7;
@@ -56,6 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 25px;
   }
   </style>
   
