@@ -1,22 +1,29 @@
 <template>
   <div id="main">
     <NavigationBar/>
-    <HomeSection/>
-    <PhysicsQuiz/>
-    <ChemistryQuiz/>
-    <ComputerScienceQuiz/>
+    <HomeSection v-if="!isPhysicsQuiz && !isChemistryQuiz && !isComputerScienceQuiz" />
+    <GeneralNote v-if="isStart"/>
+    <PhysicsQuiz v-if="isPhysicsQuiz"/>
+    <ChemistryQuiz v-if="isChemistryQuiz"/>
+    <ComputerScienceQuiz v-if="isComputerScienceQuiz"/>
   </div>
 </template>
 <script>
 import HomeSection from '../HomeSection/HomeSection.vue';
 import NavigationBar from '../Navigation/NavigationBar.vue';
+import GeneralNote from "../GeneralNote/GeneralNote.vue";
 import PhysicsQuiz from "../SubjectQuiz/PhysicsQuiz.vue";
 import ChemistryQuiz from "../SubjectQuiz/ChemistryQuiz.vue";
 import ComputerScienceQuiz from "../SubjectQuiz/ComputerScience.vue"
 export default {
-    components:{NavigationBar,HomeSection,PhysicsQuiz,ChemistryQuiz,ComputerScienceQuiz},
+    components:{NavigationBar,HomeSection,GeneralNote,PhysicsQuiz,ChemistryQuiz,ComputerScienceQuiz},
   data() {
-    return {};
+    return {
+        isStart:false,
+        isPhysicsQuiz:false,
+        isChemistryQuiz:false,
+        isComputerScienceQuiz:false,
+    };
   },
 };
 </script>
