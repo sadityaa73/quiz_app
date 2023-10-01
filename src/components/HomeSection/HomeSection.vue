@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="container-one">
-      <div class="subjects-container" v-for="subject in subjects" :key="id">
+      <div class="subjects-container" v-for="(subject,id) in subjects" :key="id">
         <div class="subject-image">
           <img
             :src="subject.imgSrc"
@@ -23,7 +23,7 @@
       <div class="incoming-events">
         <div class="heading">Upcoming Event</div>
         <div class="event-info">
-          <ul class="event-list" v-for="event in upCommingEvents" :key="id">
+          <ul class="event-list" v-for="(event,id) in upCommingEvents" :key="id">
             <li>{{ event.eventName }}</li>
           </ul>
         </div>
@@ -73,9 +73,9 @@ export default {
   methods: {
     async getGraph() {
       const data = [
-        { subject: "physics", count: 10 },
-        { subject: "checmistry", count: 20 },
-        { subject: "computer science", count: 15 },
+        { subject: "physics", count: 0 },
+        { subject: "checmistry", count: 0 },
+        { subject: "computer science", count: 0 },
       ];
       await new Chart(document.getElementById("acquisitions"), {
         type: "bar",

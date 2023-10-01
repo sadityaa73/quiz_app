@@ -1,23 +1,50 @@
 <template>
   <div class="main-container">
     <div class="container-one">
-      <div class="question-container"></div>
-      <div class="answer-container"></div>
+      <div class="question-container">
+        {{ quiz[currentQuestion].question }}
+      </div>
+      <div class="answer-container">
+        <div class="options" >
+          {{ quiz[currentQuestion].option[currentQuestion]}}
+        </div>
+      </div>
       <div class="btn-container">
         <button class="previous-btn">previous & save</button
-        ><button class="next-btn">next & save</button>
+        ><button class="next-btn" @click="nextQuestion()">next & save</button>
       </div>
     </div>
     <div class="container-two">
-     <div class="table-of-question"></div>
+      <div class="table-of-question">
+        <div class="que-no" v-for="(quiz, id) in quiz" :key="id">
+          {{ quiz.id }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
   components: {},
+  props: ["quiz"],
   data() {
-    return {};
+    return {
+      score: "",
+      totalScore: "",
+      currentQuestion: 0,
+    };
+  },
+  created(){
+    console.log("printing nested array at created",this.quiz[0].option);
+  },
+  methods: {
+    nextQuestion() {
+      if (this.currentQuestion > this.quiz.length - 1) {
+        alert("you attemped all questions");
+      } else {
+        this.currentQuestion++;
+      }
+    },
   },
 };
 </script>
@@ -40,6 +67,7 @@ export default {
   margin: 7px;
   max-width: 100%;
   min-height: 55px;
+  padding: 7px;
   border-radius: 6px;
   background: white;
 }
@@ -51,6 +79,19 @@ export default {
   margin-top: 28px;
   border-radius: 6px;
   background: white;
+}
+.options{
+  border: 1px solid;
+  max-width: fit-content;
+  min-height: 30px;
+  min-width: 289px;
+  padding-left: 7px;
+  padding-right: 7px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 19px;
+  margin: 30px;
 }
 .btn-container {
   margin: 7px;
@@ -75,7 +116,7 @@ export default {
   background: #2a8ff7;
   color: white;
 }
-.container-two{
+.container-two {
   border: 1px solid;
   margin: 7px;
   margin-top: 10px;
@@ -84,13 +125,23 @@ export default {
   border-radius: 6px;
   background: white;
 }
-.table-of-question{
+.table-of-question {
   border: 1px solid;
   margin: 5px;
-  min-height: 250px;
+  max-height: 450px;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: nowrap;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.que-no {
+  border: 1px solid;
+  min-width: 34px;
+  min-height: 30px;
+  max-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  margin: 10px;
 }
 </style>
