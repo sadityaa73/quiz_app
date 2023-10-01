@@ -5,8 +5,20 @@
         {{ quiz[currentQuestion].question }}
       </div>
       <div class="answer-container">
-        <div class="options" >
-          {{ quiz[currentQuestion].option[currentQuestion]}}
+        <div
+          class="options"
+          @click="selected(`${quiz[currentQuestion].A}`, index)"
+        >
+          {{ quiz[currentQuestion].A }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].B}`)">
+          {{ quiz[currentQuestion].B }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].C}`)">
+          {{ quiz[currentQuestion].C }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].D}`)">
+          {{ quiz[currentQuestion].D }}
         </div>
       </div>
       <div class="btn-container">
@@ -34,16 +46,19 @@ export default {
       currentQuestion: 0,
     };
   },
-  created(){
-    console.log("printing nested array at created",this.quiz[0].option);
+  created() {
+    console.log("printing nested array at created", this.quiz);
   },
   methods: {
     nextQuestion() {
-      if (this.currentQuestion > this.quiz.length - 1) {
+      if (this.currentQuestion >= this.quiz.length - 1) {
         alert("you attemped all questions");
       } else {
         this.currentQuestion++;
       }
+    },
+    selected(select) {
+      console.log(select);
     },
   },
 };
@@ -80,7 +95,7 @@ export default {
   border-radius: 6px;
   background: white;
 }
-.options{
+.options {
   border: 1px solid;
   max-width: fit-content;
   min-height: 30px;

@@ -43,12 +43,11 @@ export default {
     return {};
   },
   created() {
-    console.log("printing subjectname at created", this.subjectName.subject);
   },
   methods: {
     start() {
-      console.log("funciton called");
-      console.log(this.subjectName.subject);
+      // console.log("funciton called");
+      // console.log(this.subjectName.subject);
       this.$emit("subject", `${this.subjectName.subject}`);
     },
   },

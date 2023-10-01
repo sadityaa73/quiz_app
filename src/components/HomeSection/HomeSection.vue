@@ -91,7 +91,6 @@ export default {
       });
     },
     startQuiz(subject) {
-      console.log("printing argument", subject);
       this.$emit("subjectName", { subject: subject, isStart: true });
     },
   },
