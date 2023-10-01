@@ -1,11 +1,11 @@
 <template>
   <div id="main">
     <NavigationBar/>
-    <HomeSection v-if="!isPhysicsQuiz && !isChemistryQuiz && !isComputerScienceQuiz" />
-    <GeneralNote v-if="isStart"/>
-    <PhysicsQuiz v-if="isPhysicsQuiz"/>
-    <ChemistryQuiz v-if="isChemistryQuiz"/>
-    <ComputerScienceQuiz v-if="isComputerScienceQuiz"/>
+    <HomeSection v-if="!isPhysicsQuiz && !isChemistryQuiz && !isComputerScienceQuiz && !isStart" @subjectName="getSubjectName"/>
+    <GeneralNote v-if="isStart" :subjectName="subject" @subject="startQuiz"/>
+    <PhysicsQuiz v-if="isPhysicsQuiz" :subjectName = "subject"/>
+    <ChemistryQuiz v-if="isChemistryQuiz" :subjectName = "subject"/>
+    <ComputerScienceQuiz v-if="isComputerScienceQuiz" :subjectName = "subject"/>
   </div>
 </template>
 <script>
@@ -23,8 +23,30 @@ export default {
         isPhysicsQuiz:false,
         isChemistryQuiz:false,
         isComputerScienceQuiz:false,
+        subject:""
     };
   },
+  methods:{
+    getSubjectName(event){
+        this.subject = event;
+        this.isStart = event;
+    },
+    startQuiz(event){
+        if(event === "physics")
+        {
+            this.isStart =  false;
+            this.isPhysicsQuiz = true;
+        }else if(event === "chemistry")
+        {
+            this.isStart =  false;
+            this.isChemistryQuiz = true;
+        }
+        else{
+            this.isStart =  false;
+            this.isComputerScienceQuiz = true;
+        }
+    }
+  }
 };
 </script>
 <style scoped>

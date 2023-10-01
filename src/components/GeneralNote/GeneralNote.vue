@@ -1,6 +1,7 @@
 <template>
   <div id="main-container">
     <div class="timer-clock">
+      <div class="subject-name">{{ subjectName.subject }}</div>
       <div class="clock-container">
         {{ "03" + ":" + "00" + ":" + "00" }}
       </div>
@@ -16,7 +17,7 @@
           <li>This section consisit 20 question.</li>
           <li>Total marks is 20,each question having 1 marks .</li>
           <li>Read all question properly before selecting answer for that.</li>
-          <li>No negative marks in deducted for any question.</li>
+          <li>No negative marks are deducted for any question.</li>
           <li>
             Please give answer for all the question that is given in this
             section.
@@ -29,15 +30,27 @@
       </div>
     </div>
     <div class="btn-container">
-      <button class="start-btn">Start</button>
+      <button class="start-btn" @click="start()">Start</button>
     </div>
   </div>
 </template>
 <script>
 export default {
   components: {},
+  props: ["subjectName"],
+  emits: ["subject"],
   data() {
     return {};
+  },
+  created() {
+    console.log("printing subjectname at created", this.subjectName.subject);
+  },
+  methods: {
+    start() {
+      console.log("funciton called");
+      console.log(this.subjectName.subject);
+      this.$emit("subject", `${this.subjectName.subject}`);
+    },
   },
 };
 </script>
@@ -53,7 +66,23 @@ export default {
   min-height: 94px;
   margin: 7px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.subject-name {
+  border: 1px solid;
+  min-width: 156px;
+  height: 45px;
+  margin: 6px;
+  border-radius: 7px;
+  background: #2a8ff7;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .clock-container {
   border: 1px solid;

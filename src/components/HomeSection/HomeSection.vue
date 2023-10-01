@@ -1,11 +1,11 @@
 <template>
   <div id="home">
     <div class="container-one">
-      <div class="subjects-container">
+      <div class="subjects-container" v-for="subject in subjects" :key="id">
         <div class="subject-image">
           <img
-            src="https://www.environmentalscience.org/wp-content/uploads/2018/08/physics-300x300.webp"
-            alt="physics"
+            :src="subject.imgSrc"
+            :alt="subject.subjectName"
             style="
               width: 310px;
               height: 180px;
@@ -14,57 +14,17 @@
             "
           />
         </div>
-        <div class="start-btn">start quiz</div>
-      </div>
-      <div class="subjects-container">
-        <div class="subject-image">
-          <img
-            src="https://www.thoughtco.com/thmb/bcj-0Qw8kGp6JQPryxb6vrr5Cc4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-545286316-433dd345105e4c6ebe4cdd8d2317fdaa.jpg"
-            alt="chemistry"
-            style="
-              width: 310px;
-              height: 180px;
-              margin-left: auto;
-              margin-right: auto;
-            "
-          />
+        <div class="start-btn" @click="startQuiz(subject.subjectName)">
+          start quiz
         </div>
-        <div class="start-btn">start quiz</div>
-      </div>
-      <div class="subjects-container">
-        <div class="subject-image">
-          <img
-            src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/06/22210327/BE-Computer-Science.png"
-            alt="chemistry"
-            style="
-              width: 310px;
-              height: 180px;
-              margin-left: auto;
-              margin-right: auto;
-            "
-          />
-        </div>
-        <div class="start-btn">start quiz</div>
       </div>
     </div>
     <div class="container-two">
       <div class="incoming-events">
         <div class="heading">Upcoming Event</div>
         <div class="event-info">
-          <ul class="event-list">
-            <li>event list</li>
-          </ul>
-          <ul class="event-list">
-            <li>event list</li>
-          </ul>
-          <ul class="event-list">
-            <li>event list</li>
-          </ul>
-          <ul class="event-list">
-            <li>event list</li>
-          </ul>
-          <ul class="event-list">
-            <li>event list</li>
+          <ul class="event-list" v-for="event in upCommingEvents" :key="id">
+            <li>{{ event.eventName }}</li>
           </ul>
         </div>
       </div>
@@ -80,8 +40,32 @@
 <script>
 import Chart from "chart.js/auto";
 export default {
+  components: {},
+  emits: ["subjectName", "isStart"],
   data() {
-    return {};
+    return {
+      subjects: [
+        {
+          id: 1,
+          subjectName: "physics",
+          imgSrc:
+            "https://www.environmentalscience.org/wp-content/uploads/2018/08/physics-300x300.webp",
+        },
+        {
+          id: 2,
+          subjectName: "chemistry",
+          imgSrc:
+            "https://www.thoughtco.com/thmb/bcj-0Qw8kGp6JQPryxb6vrr5Cc4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-545286316-433dd345105e4c6ebe4cdd8d2317fdaa.jpg",
+        },
+        {
+          id: 1,
+          subjectName: "computerScience",
+          imgSrc:
+            "https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/06/22210327/BE-Computer-Science.png",
+        },
+      ],
+      upCommingEvents: [{ id: 1, eventName: "New Quiz are comming up!!" }],
+    };
   },
   mounted() {
     this.getGraph();
@@ -105,6 +89,10 @@ export default {
           ],
         },
       });
+    },
+    startQuiz(subject) {
+      console.log("printing argument", subject);
+      this.$emit("subjectName", { subject: subject, isStart: true });
     },
   },
 };

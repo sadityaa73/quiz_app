@@ -1,6 +1,6 @@
 <template>
   <div id="phy-quiz">
-    <countDownTimer />
+    <countDownTimer :subjectName = "subjectName"/>
     <QuestionComponent/>
   </div>
 </template>
@@ -9,6 +9,7 @@ import countDownTimer from "../CountDown/countDownTimer.vue";
 import QuestionComponent from "../question/QuestionComponent.vue";
 export default {
   components: { countDownTimer,QuestionComponent },
+  props:['subjectName'],
   data() {
     return {
       hours: 3,

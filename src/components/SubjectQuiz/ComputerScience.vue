@@ -1,6 +1,6 @@
 <template>
   <div id="comp-quiz">
-    <countDownTimer/>
+    <countDownTimer :subjectName="subjectName"/>
     <QuestionComponent/>
   </div>
 </template>
@@ -11,6 +11,7 @@ export default {
     components:{
         countDownTimer,QuestionComponent,
     },
+    props:['subjectName'],
   data() {
     return {};
   },
