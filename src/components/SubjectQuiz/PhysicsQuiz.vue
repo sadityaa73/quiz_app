@@ -43,7 +43,7 @@ export default {
 </script>
 <style scoped>
 #phy-quiz {
-  min-width: 70%;
+  min-width: 90%;
   min-height: 49vh;
   border-radius: 9px;
   box-shadow: 1px 3px 8px 3px grey;

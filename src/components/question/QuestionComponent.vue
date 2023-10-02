@@ -5,10 +5,7 @@
         {{ quiz[currentQuestion].question }}
       </div>
       <div class="answer-container">
-        <div
-          class="options"
-          @click="selected(`${quiz[currentQuestion].A}`, index)"
-        >
+        <div class="options" @click="selected(`${quiz[currentQuestion].A}`)">
           {{ quiz[currentQuestion].A }}
         </div>
         <div class="options" @click="selected(`${quiz[currentQuestion].B}`)">
@@ -22,7 +19,12 @@
         </div>
       </div>
       <div class="btn-container">
-        <button class="previous-btn">previous & save</button
+        <button
+          class="previous-btn"
+          @click="previousQuestion()"
+          v-if="currentQuestion > 0"
+        >
+          previous & save</button
         ><button class="next-btn" @click="nextQuestion()">next & save</button>
       </div>
     </div>
@@ -44,6 +46,7 @@ export default {
       score: "",
       totalScore: "",
       currentQuestion: 0,
+      isPrevious: false,
     };
   },
   created() {
@@ -51,14 +54,45 @@ export default {
   },
   methods: {
     nextQuestion() {
+      var attemptedQuestion = document.querySelectorAll(".que-no");
+      console.log("print length of que-no", attemptedQuestion.length);
+
+      ("lightGreen");
+      for (let i = 0; i < attemptedQuestion.length; i++) {
+        if (this.currentQuestion === i) {
+          attemptedQuestion[i].style.backgroundColor = "lightGreen";
+        }
+      }
+
       if (this.currentQuestion >= this.quiz.length - 1) {
         alert("you attemped all questions");
       } else {
         this.currentQuestion++;
+        var selectedOption = document.querySelectorAll(".options");
+        selectedOption.forEach((element) => {
+          element.style.color = "";
+        });
+      }
+    },
+    previousQuestion() {
+      if (this.currentQuestion >= 0) {
+        this.currentQuestion--;
       }
     },
     selected(select) {
       console.log(select);
+
+      var selectedOption = document.querySelectorAll(".options");
+
+      selectedOption.forEach(function (selection) {
+        selection.addEventListener("click", function (event) {
+          event.stopPropagation();
+          selectedOption.forEach((element) => {
+            element.style.color = "";
+          });
+          this.style.color = "red";
+        });
+      });
     },
   },
 };
@@ -79,8 +113,8 @@ export default {
 }
 .question-container {
   border: 1px solid;
-  margin: 7px;
-  max-width: 100%;
+  margin: 6px;
+  width: 95%;
   min-height: 55px;
   padding: 7px;
   border-radius: 6px;
@@ -94,6 +128,9 @@ export default {
   margin-top: 28px;
   border-radius: 6px;
   background: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .options {
   border: 1px solid;
@@ -104,19 +141,20 @@ export default {
   padding-right: 7px;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items:center;
   font-size: 19px;
-  margin: 30px;
+  margin: 10px;
 }
 .btn-container {
   margin: 7px;
   min-height: 36px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 .previous-btn {
   margin-left: 6px;
+  margin-right: 63%;
   height: 32px;
   border-radius: 7px;
   border: none;
@@ -158,5 +196,8 @@ export default {
   align-items: center;
   border-radius: 7px;
   margin: 10px;
+}
+.focused {
+  background: "green";
 }
 </style>
