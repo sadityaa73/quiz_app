@@ -1,7 +1,7 @@
 <template>
   <div id="phy-quiz">
     <countDownTimer :subjectName = "subjectName"/>
-    <QuestionComponent :quiz="phyQuiz"/>
+    <QuestionComponent :quiz ="phyQuiz" :subjectName= "subjectName"/>
   </div>
 </template>
 <script>

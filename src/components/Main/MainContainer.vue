@@ -13,8 +13,16 @@
       :subjectName="subject"
       :phyQuiz="physicsQuiz"
     />
-    <ChemistryQuiz v-if="isChemistryQuiz" :subjectName="subject" />
-    <ComputerScienceQuiz v-if="isComputerScienceQuiz" :subjectName="subject" />
+    <ChemistryQuiz
+      v-if="isChemistryQuiz"
+      :subjectName="subject"
+      :chemQuiz="ChemistryQuiz"
+    />
+    <ComputerScienceQuiz
+      v-if="isComputerScienceQuiz"
+      :subjectName="subject"
+      :computerQuiz="computerScience"
+    />
   </div>
 </template>
 <script>
@@ -143,113 +151,101 @@ export default {
       ChemistryQuiz: [
         {
           id: 1,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "The alloy steel containing chromium to resist rusting is known as stainless steel. What is played by Chromium in stainless steel? 1.Chromium does not rust, so it works as protecting cover. 2. Chromium reacts with Iron to make a compound that is not affected by Oxygen Select the correct option from the codes given below:",
+          Answer: "Neither 1 nor 2",
+          A: "Only 1",
+          B: "Only 2",
+          C: "Both 1 & 2",
+          D: "Neither 1 nor 2",
         },
         {
           id: 2,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "Which of the following chemicals is also known as lachrymatory agent or lachrymator? ",
+          Answer: "Tear gas",
+          A: "Mustard Gas",
+          B: "Tear gas",
+          C: "Diborane",
+          D: "Chlorine gas",
         },
         {
           id: 3,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "Which of the following chemicals is also known as butter of tin ?",
+          Answer: "Stannic chloride",
+          A: "Stannic chloride",
+          B: "Sodium perborate",
+          C: "Potassium nitrate",
+          D: "Magnesium hydroxide",
         },
         {
           id: 4,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "Which of the following states of matter has the weakest Intermolecular forces?",
+          Answer: "Gases",
+          A: "Solids",
+          B: "Liquids",
+          C: "Gases",
+          D: "It is same in solids, liquids and gases",
         },
         {
           id: 5,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "What is the maximum stress after which the wire breaks called as?",
+          Answer: "Tensile strength",
+          A: "Tensile strength",
+          B: "Shear strength",
+          C: "Bulk strength",
+          D: "Hooke’s strength",
         },
         {
           id: 6,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "What can be the maximum number of electrons in a shell, if principal quantum number is n?",
+          Answer: "2n2",
+          A: "n",
+          B: "n2",
+          C: "2n2",
+          D: "3n3",
         },
         {
           id: 7,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "Which of the following equation represents combination of Hydrogen gas with nitrogen to form ammonia?",
+          Answer: "3H2 + N2 –> 2NH3",
+          A: "2H2 + N –> NH3",
+          B: "2H + N3 –> NH3",
+          C: "3H2 + N2 –> 2NH3",
+          D: "None of the above",
         },
         {
           id: 8,
-          question: "",
+          question: "What of these is the chemical formula of Rust?",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "Fe2O3. nH2O",
+          B: "Fe2Cl3. nH2O",
+          C: "FeCO2. nH2O",
+          D: "FeO. nH2O",
         },
         {
           id: 9,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question:
+            "The Lanthanoids are part of which of the following block of elements in the periodic table?",
+          Answer: "f-block",
+          A: "p-block",
+          B: "s-block",
+          C: "d-block",
+          D: "f-block",
         },
         {
           id: 10,
-          question: "",
-          Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          question: "Choose the incorrect statement:",
+          Answer: "Epsom salt is an ore containing Sodium",
+          A: "Epsom salt is an ore containing Sodium",
+          B: "Bauxite is an ore of Aluminium",
+          C: "Asbestos is an ore containing Calcium",
+          D: "Milarite mineral contains Nickel",
         },
       ],
       computerScience: [
@@ -257,111 +253,91 @@ export default {
           id: 1,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 2,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 3,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 4,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 5,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 6,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 7,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 8,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 9,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
         {
           id: 10,
           question: "",
           Answer: "",
-          option: [
-            { id: 1, A: "" },
-            { id: 2, B: "" },
-            { id: 3, C: "" },
-            { id: 4, D: "" },
-          ],
+          A: "",
+          B: "",
+          C: "",
+          D: "",
         },
       ],
     };

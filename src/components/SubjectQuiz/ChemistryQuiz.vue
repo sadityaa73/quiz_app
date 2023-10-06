@@ -1,7 +1,7 @@
 <template>
   <div id="chem-quiz">
-    <countDownTimer :subjectName="subjectName"/>
-    <QuestionComponent/>
+    <countDownTimer :subjectName ="subjectName"/>
+    <QuestionComponent :quiz ="chemQuiz" :subjectName ="subjectName" />
   </div>
 </template>
 <script>
@@ -9,7 +9,7 @@ import countDownTimer from "../CountDown/countDownTimer.vue";
 import QuestionComponent from "../question/QuestionComponent.vue";
 export default {
     components:{countDownTimer,QuestionComponent,},
-    props:['subjectName'],
+    props:['subjectName','chemQuiz'],
   data() {
     return {};
   },

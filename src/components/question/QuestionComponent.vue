@@ -1,10 +1,44 @@
 <template>
   <div class="main-container">
     <div class="container-one">
-      <div class="question-container">
+      <div class="question-container" v-if="isPhysicsQuiz">
         {{ quiz[currentQuestion].question }}
       </div>
-      <div class="answer-container">
+      <div class="answer-container" v-if="isPhysicsQuiz">
+        <div class="options" @click="selected(`${quiz[currentQuestion].A}`)">
+          {{ quiz[currentQuestion].A }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].B}`)">
+          {{ quiz[currentQuestion].B }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].C}`)">
+          {{ quiz[currentQuestion].C }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].D}`)">
+          {{ quiz[currentQuestion].D }}
+        </div>
+      </div>
+      <div class="question-container" v-if="isChemistryQuiz">
+        {{ quiz[currentQuestion].question }}
+      </div>
+      <div class="answer-container" v-if="isChemistryQuiz">
+        <div class="options" @click="selected(`${quiz[currentQuestion].A}`)">
+          {{ quiz[currentQuestion].A }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].B}`)">
+          {{ quiz[currentQuestion].B }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].C}`)">
+          {{ quiz[currentQuestion].C }}
+        </div>
+        <div class="options" @click="selected(`${quiz[currentQuestion].D}`)">
+          {{ quiz[currentQuestion].D }}
+        </div>
+      </div>
+      <div class="question-container" v-if="isComputerScienceQuiz">
+        {{ quiz[currentQuestion].question }}
+      </div>
+      <div class="answer-container" v-if="isComputerScienceQuiz">
         <div class="options" @click="selected(`${quiz[currentQuestion].A}`)">
           {{ quiz[currentQuestion].A }}
         </div>
@@ -40,20 +74,28 @@
 <script>
 export default {
   components: {},
-  props: ["quiz"],
+  props: ["quiz",'chemQuiz','subjectName'],
   data() {
     return {
       score: "",
       totalScore: "",
       currentQuestion: 0,
       isPrevious: false,
+      selectedOpiton:"",
+      isPhysicsQuiz:false,
+      isChemistryQuiz:false,
+      isComputerScienceQuiz:false
     };
   },
   created() {
-    console.log("printing nested array at created", this.quiz);
+    // console.log("printing nested array at created", this.quiz);
+    console.log("printing current score", this.score);
+    this.getSubject();
+    console.log("printing subject",this.subjectName.subject);
   },
   methods: {
     nextQuestion() {
+      this.checkAnswer(this.selectedOpiton);
       var attemptedQuestion = document.querySelectorAll(".que-no");
       console.log("print length of que-no", attemptedQuestion.length);
 
@@ -81,7 +123,8 @@ export default {
     },
     selected(select) {
       console.log(select);
-
+    // debugger;
+      this.selectedOpiton = select;
       var selectedOption = document.querySelectorAll(".options");
 
       selectedOption.forEach(function (selection) {
@@ -91,9 +134,47 @@ export default {
             element.style.color = "";
           });
           this.style.color = "red";
+          this.selectedOption = select;
         });
       });
     },
+    checkAnswer(select)
+    {
+      console.log("@@select",select);
+      console.log("anwer",this.quiz[this.currentQuestion].Answer,this.quiz[this.currentQuestion].Answer === select);
+      if (this.quiz[this.currentQuestion].Answer === select) {
+           this.score++;
+           console.log("printing current score", this.score);
+      } else {
+        if (this.quiz[this.currentQuestion].Answer != select) {
+          this.score--;
+          console.log("printing current score", this.score);
+        } else {
+          alert("there is something wrong happen");
+        }
+      }
+    },
+    getSubject()
+    {
+      if(this.subjectName.subject === "physics")
+      {
+        this.isPhysicsQuiz = true;
+        this.isChemistryQuiz = false;
+        this.isComputerScienceQuiz = false;
+      }
+      if(this.subjectName.subject === "chemistry")
+      {
+        this.isPhysicsQuiz = false;
+        this.isChemistryQuiz = true;
+        this.isComputerScienceQuiz = false;
+      }
+      if(this.subjectName.subject === "computerScience")
+      {
+        this.isPhysicsQuiz = false;
+        this.isChemistryQuiz = false;
+        this.isComputerScienceQuiz = true;
+      }
+    }
   },
 };
 </script>
@@ -141,7 +222,7 @@ export default {
   padding-right: 7px;
   display: flex;
   justify-content: flex-start;
-  align-items:center;
+  align-items: center;
   font-size: 19px;
   margin: 10px;
 }

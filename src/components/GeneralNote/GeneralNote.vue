@@ -8,14 +8,14 @@
     </div>
     <div class="advisory-container">
       <div class="no-of-question-marks">
-        <div class="no-of-question">Total Questions: 20</div>
-        <div class="total-marks">Total Marks: 20</div>
+        <div class="no-of-question">Total Questions: 10</div>
+        <div class="total-marks">Total Marks: 10</div>
       </div>
       <hr />
       <div class="key-points">
         <ul class="points">
-          <li>This section consisit 20 question.</li>
-          <li>Total marks is 20,each question having 1 marks .</li>
+          <li>This section consisit 10 question.</li>
+          <li>Total marks is 10,each question having 1 marks .</li>
           <li>Read all question properly before selecting answer for that.</li>
           <li>No negative marks are deducted for any question.</li>
           <li>
