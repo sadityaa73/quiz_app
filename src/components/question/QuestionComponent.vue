@@ -132,8 +132,10 @@ export default {
           event.stopPropagation();
           selectedOption.forEach((element) => {
             element.style.color = "";
+            // element.style.backgroundColor = "white";
           });
-          this.style.color = "red";
+          this.style.color = "green";
+          // this.style.backgroundColor = "lightgreen";
           this.selectedOption = select;
         });
       });
@@ -215,6 +217,7 @@ export default {
 }
 .options {
   border: 1px solid;
+  border-radius: 5px;
   max-width: fit-content;
   min-height: 30px;
   min-width: 289px;
