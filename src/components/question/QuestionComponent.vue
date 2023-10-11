@@ -88,18 +88,13 @@ export default {
     };
   },
   created() {
-    // console.log("printing nested array at created", this.quiz);
-    // console.log("printing current score", this.score);
     this.getSubject();
-    // console.log("printing subject",this.subjectName.subject);
   },
   methods: {
     nextQuestion() {
       this.checkAnswer(this.selectedOpiton);
       var attemptedQuestion = document.querySelectorAll(".que-no");
-      // console.log("print length of que-no", attemptedQuestion.length);
 
-      ("lightGreen");
       for (let i = 0; i < attemptedQuestion.length; i++) {
         if (this.currentQuestion === i) {
           attemptedQuestion[i].style.backgroundColor = "lightGreen";
@@ -122,8 +117,6 @@ export default {
       }
     },
     selected(select) {
-      // console.log(select);
-    // debugger;
       this.selectedOpiton = select;
       var selectedOption = document.querySelectorAll(".options");
 
@@ -132,25 +125,19 @@ export default {
           event.stopPropagation();
           selectedOption.forEach((element) => {
             element.style.color = "";
-            // element.style.backgroundColor = "white";
           });
           this.style.color = "green";
-          // this.style.backgroundColor = "lightgreen";
           this.selectedOption = select;
         });
       });
     },
     checkAnswer(select)
     {
-      // console.log("@@select",select);
-      // console.log("anwer",this.quiz[this.currentQuestion].Answer,this.quiz[this.currentQuestion].Answer === select);
       if (this.quiz[this.currentQuestion].Answer === select) {
            this.score++;
-          //  console.log("printing current score", this.score);
       } else {
         if (this.quiz[this.currentQuestion].Answer != select) {
           this.score--;
-          // console.log("printing current score", this.score);
         } else {
           alert("there is something wrong happen");
         }
