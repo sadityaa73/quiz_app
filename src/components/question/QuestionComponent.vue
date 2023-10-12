@@ -75,6 +75,7 @@
 export default {
   components: {},
   props: ["quiz",'chemQuiz','subjectName'],
+  emits:['finalSubmit'],
   data() {
     return {
       score: "",
@@ -102,7 +103,7 @@ export default {
       }
 
       if (this.currentQuestion >= this.quiz.length - 1) {
-        alert("you attemped all questions");
+          this.$emit('finalSubmit',true);
       } else {
         this.currentQuestion++;
         var selectedOption = document.querySelectorAll(".options");

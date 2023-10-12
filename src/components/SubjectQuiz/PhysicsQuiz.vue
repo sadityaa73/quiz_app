@@ -1,20 +1,30 @@
 <template>
   <div id="phy-quiz">
-    <countDownTimer :subjectName = "subjectName"/>
-    <QuestionComponent :quiz ="phyQuiz" :subjectName= "subjectName"/>
+    <countDownTimer :subjectName="subjectName" v-if="countDownTimer" />
+    <QuestionComponent
+      :quiz="phyQuiz"
+      :subjectName="subjectName"
+      @finalSubmit="submit"
+      v-if="questionComponent"
+    />
+    <submitComponent :quiz="phyQuiz" v-if="isFinalSubmit" />
   </div>
 </template>
 <script>
 import countDownTimer from "../CountDown/countDownTimer.vue";
 import QuestionComponent from "../question/QuestionComponent.vue";
+import submitComponent from "../submit/submitComponent.vue";
 export default {
-  components: { countDownTimer,QuestionComponent },
-  props:['subjectName','phyQuiz'],
+  components: { countDownTimer, QuestionComponent, submitComponent },
+  props: ["subjectName", "phyQuiz"],
   data() {
     return {
       hours: 3,
       minutes: 0,
       seconds: 0,
+      isFinalSubmit: false,
+      questionComponent: true,
+      countDownTimer: true,
     };
   },
   created() {
@@ -38,6 +48,11 @@ export default {
         }
       }, 1000);
     },
+    submit(event) {
+      this.questionComponent = false;
+      this.countDownTimer = false;
+      this.isFinalSubmit = event;
+    },
   },
 };
 </script>
@@ -49,6 +64,4 @@ export default {
   box-shadow: 1px 3px 8px 3px grey;
   margin: 1%;
 }
-
-
 </style>

@@ -23,7 +23,6 @@
       :subjectName="subject"
       :computerQuiz="computerScience"
     />
-    <submitComponent/>
   </div>
 </template>
 <script>
@@ -33,7 +32,6 @@ import GeneralNote from "../GeneralNote/GeneralNote.vue";
 import PhysicsQuiz from "../SubjectQuiz/PhysicsQuiz.vue";
 import ChemistryQuiz from "../SubjectQuiz/ChemistryQuiz.vue";
 import ComputerScienceQuiz from "../SubjectQuiz/ComputerScience.vue";
-import submitComponent from "../submit/submitComponent.vue"
 export default {
   components: {
     NavigationBar,
@@ -42,7 +40,6 @@ export default {
     PhysicsQuiz,
     ChemistryQuiz,
     ComputerScienceQuiz,
-    submitComponent
   },
   data() {
     return {

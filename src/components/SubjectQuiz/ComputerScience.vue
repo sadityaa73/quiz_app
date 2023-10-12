@@ -1,20 +1,34 @@
 <template>
   <div id="comp-quiz">
-    <countDownTimer :subjectName ="subjectName"/>
-    <QuestionComponent :quiz ="computerQuiz" :subjectName ="subjectName"/>
+    <countDownTimer :subjectName ="subjectName" v-if="countDownTimer"/>
+    <QuestionComponent :quiz ="computerQuiz" :subjectName ="subjectName"  @finalSubmit="submit" v-if="questionComponent"/>
+    <submitComponent :quiz ="computerQuiz" v-if="isFinalSubmit"/>
   </div>
 </template>
 <script>
 import countDownTimer from "../CountDown/countDownTimer.vue";
 import QuestionComponent from "../question/QuestionComponent.vue";
+import submitComponent from "../submit/submitComponent.vue";
 export default {
     components:{
-        countDownTimer,QuestionComponent,
+        countDownTimer,QuestionComponent,submitComponent
     },
+    emits:['finalSubmit'],
     props:['subjectName','computerQuiz'],
   data() {
-    return {};
+    return {
+      isFinalSubmit: false,
+      questionComponent: true,
+      countDownTimer: true,
+    };
   },
+  methods:{
+    submit(event) {
+      this.questionComponent = false;
+      this.countDownTimer = false;
+      this.isFinalSubmit = event;
+    },
+  }
 };
 </script>
 <style scoped>

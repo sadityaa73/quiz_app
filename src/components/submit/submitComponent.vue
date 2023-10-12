@@ -2,7 +2,9 @@
   <div id="main-container">
     <div class="container-two">
       <div class="table-of-question">
-        <div class="que-no"></div>
+        <div class="que-no" v-for="(quiz, id) in quiz" :key="id">
+            {{ quiz.id }}
+          </div>
       </div>
       <div class="btn-container">
         <button class="final-submit">submit</button>
@@ -13,9 +15,13 @@
 <script>
 export default {
   comsponents: {},
+  props:['quiz'],
   data() {
     return {};
   },
+  created(){
+    console.log("printng quiz",this.quiz);
+  }
 };
 </script>
 <style scoped>
